@@ -17,7 +17,7 @@ export const P: Record<Lang, P> = {
       { name: "Van", desc: "Ideal für Familien und Flughafentransfers mit Gepäck." },
       { name: "Kleinbus", desc: "Für Gruppen, Ausflüge und Skitransfers." },
     ],
-    rTitle: "Was unsere Kunden sagen", rSub: "Echte Bewertungen von Fahrgästen in Salzburg.", rCount: "Bewertungen",
+    rTitle: "Was unsere Kunden sagen", rSub: "Bewertungen von Fahrgästen in Salzburg.", rCount: "Bewertungen",
     cTitle: "Kontakt", cSub: "Wir sind rund um die Uhr für Sie erreichbar.", phone: "Telefon", whatsapp: "WhatsApp", email: "E-Mail", address: "Adresse", hours: "Erreichbarkeit", hoursVal: "24 Stunden, 7 Tage",
   },
   en: {

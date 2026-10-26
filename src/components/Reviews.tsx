@@ -41,13 +41,13 @@ export function Reviews() {
         {REVIEWS.map((r) => (
           <figure key={r.name} className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-card">
             <Stars n={r.rating} />
-            <blockquote className="mt-3 flex-1 text-foreground">“{r.text}”</blockquote>
+            <blockquote dir="auto" className="mt-3 flex-1 text-foreground">“{r.text}”</blockquote>
             <figcaption className="mt-5 flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">
                 {r.name.charAt(0)}
               </span>
               <span>
-                <span className="block font-bold">{r.name}</span>
+                <span dir="auto" className="block font-bold">{r.name}</span>
                 <span className="block text-sm text-muted-foreground">{r.from}</span>
               </span>
             </figcaption>
