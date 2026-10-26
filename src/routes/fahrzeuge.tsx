@@ -33,10 +33,10 @@ function Vehicles() {
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {SPECS.map((s, i) => (
           <article key={i} className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
-            <img src={s.img} alt={p.cars[i].name} loading="lazy" width={1200} height={800} className="aspect-[3/2] w-full object-cover" />
+            <img src={s.img} alt={p.cars[i]?.name} loading="lazy" width={1200} height={800} className="aspect-[3/2] w-full object-cover" />
             <div className="p-6">
-              <h2 className="font-display text-2xl font-extrabold">{p.cars[i].name}</h2>
-              <p className="mt-2 text-muted-foreground">{p.cars[i].desc}</p>
+              <h2 className="font-display text-2xl font-extrabold">{p.cars[i]?.name}</h2>
+              <p className="mt-2 text-muted-foreground">{p.cars[i]?.desc}</p>
               <div className="mt-4 flex gap-3 text-sm font-semibold">
                 <span className="rounded-full bg-secondary px-3 py-1">👤 {s.seats} {p.seats}</span>
                 <span className="rounded-full bg-secondary px-3 py-1">🧳 {s.bags} {p.bags}</span>
