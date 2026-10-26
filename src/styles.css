@@ -96,6 +96,7 @@
   --sidebar-border: oklch(0.91 0.012 240);
   --sidebar-ring: oklch(0.52 0.16 245);
   --hero-foreground: oklch(0.99 0 0);
+  --star: oklch(0.8 0.16 80);
   --gradient-hero: linear-gradient(90deg, oklch(0.2 0.04 250 / 0.75) 0%, oklch(0.2 0.04 250 / 0.35) 50%, transparent 80%);
   --shadow-glow: 0 10px 30px -10px color-mix(in oklab, var(--primary) 50%, transparent);
   --shadow-card: 0 4px 20px -8px oklch(0.3 0.05 250 / 0.15);
@@ -105,6 +106,7 @@
   --font-display: "DM Sans", sans-serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
   --color-hero-foreground: var(--hero-foreground);
+  --color-star: var(--star);
 }
 
 @utility shadow-card {

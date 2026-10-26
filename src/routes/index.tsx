@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import hero from "@/assets/hero-alps.jpg";
 import { useLang } from "@/lib/lang";
+import { Reviews } from "@/components/Reviews";
 import { PHONE, WA } from "@/lib/contact";
 import { AIRPORT_FLAT, estimateFare } from "@/lib/pricing";
 
@@ -128,6 +129,7 @@ function Index() {
         </div>
       </section>
 
+      <Reviews />
     </div>
   );
 }
