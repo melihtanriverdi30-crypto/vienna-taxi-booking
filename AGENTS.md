@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Language state lives in a shared provider (src/lib/lang.tsx) mounted in __root with the site header/footer, so every page shares one language choice.

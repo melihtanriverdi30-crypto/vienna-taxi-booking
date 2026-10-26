@@ -1,13 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import hero from "@/assets/hero-alps.jpg";
-import { LANGS, T, type Lang } from "@/lib/i18n";
+import { useLang } from "@/lib/lang";
+import { PHONE, WA } from "@/lib/contact";
 import { AIRPORT_FLAT, estimateFare } from "@/lib/pricing";
-
-// Placeholder contact — replace with the real company number
-const PHONE = "+43662000000";
-const WA = "43662000000";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,16 +31,10 @@ const schema = z.object({
 });
 
 function Index() {
-  const [lang, setLang] = useState<Lang>("de");
-  const t = T[lang];
+  const { t } = useLang();
   const [km, setKm] = useState(10);
   const [night, setNight] = useState(false);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-  }, [lang]);
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,25 +48,8 @@ function Index() {
   }
 
   return (
-    <div className="min-h-screen font-sans">
-      <header className="fixed inset-x-0 top-0 z-20 border-b border-border/50 bg-card/95 backdrop-blur shadow-card">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-          <span className="font-display text-lg tracking-wide">
-            <span className="rounded-lg bg-primary px-2 py-1 text-primary-foreground">TAXI</span> <span className="font-extrabold">Salzburg</span>
-          </span>
-          <div className="flex flex-wrap gap-1">
-            {LANGS.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => setLang(l.code)}
-                className={`rounded-md px-2.5 py-1 text-sm font-semibold transition ${lang === l.code ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-muted"}`}
-              >
-                {l.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </header>
+    <div className="font-sans">
+
 
       <section className="relative flex min-h-[88vh] items-end">
         <img src={hero} alt="Taxi Salzburg" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
@@ -154,19 +128,6 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} {t.footer} · <a href={`tel:${PHONE}`}>{PHONE}</a>
-      </footer>
-
-      <a
-        href={`https://wa.me/${WA}`}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="WhatsApp"
-        className="fixed bottom-5 end-5 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-2xl shadow-glow transition hover:scale-110"
-      >
-        💬
-      </a>
     </div>
   );
 }
