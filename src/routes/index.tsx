@@ -1,13 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import hero from "@/assets/hero-alps.jpg";
-import { LANGS, T, type Lang } from "@/lib/i18n";
+import { useLang } from "@/lib/lang";
+import { PHONE, WA } from "@/lib/contact";
 import { AIRPORT_FLAT, estimateFare } from "@/lib/pricing";
-
-// Placeholder contact — replace with the real company number
-const PHONE = "+43662000000";
-const WA = "43662000000";
 
 export const Route = createFileRoute("/")({
   head: () => ({
