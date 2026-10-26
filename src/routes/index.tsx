@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { z } from "zod";
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero-alps.jpg";
 import { LANGS, T, type Lang } from "@/lib/i18n";
 import { AIRPORT_FLAT, estimateFare } from "@/lib/pricing";
 
@@ -58,10 +58,10 @@ function Index() {
 
   return (
     <div className="min-h-screen font-sans">
-      <header className="fixed inset-x-0 top-0 z-20 border-b border-border/50 bg-background/80 backdrop-blur">
+      <header className="fixed inset-x-0 top-0 z-20 border-b border-border/50 bg-card/95 backdrop-blur shadow-card">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
           <span className="font-display text-lg tracking-wide">
-            <span className="rounded bg-primary px-2 py-0.5 text-primary-foreground">TAXI</span> SALZBURG
+            <span className="rounded-lg bg-primary px-2 py-1 text-primary-foreground">TAXI</span> <span className="font-extrabold">Salzburg</span>
           </span>
           <div className="flex flex-wrap gap-1">
             {LANGS.map((l) => (
@@ -77,23 +77,23 @@ function Index() {
         </div>
       </header>
 
-      <section className="relative flex min-h-[92vh] items-end">
+      <section className="relative flex min-h-[88vh] items-end">
         <img src={hero} alt="Taxi Salzburg" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="relative mx-auto w-full max-w-6xl px-4 pb-20 pt-32">
-          <p className="mb-3 font-semibold uppercase tracking-widest text-primary">{t.tagline}</p>
-          <h1 className="max-w-3xl font-display text-4xl leading-tight md:text-6xl">{t.heroTitle}</h1>
-          <p className="mt-4 max-w-xl text-lg text-muted-foreground">{t.heroSub}</p>
+        <div className="relative mx-auto w-full max-w-6xl px-4 pb-20 pt-32 text-hero-foreground">
+          <p className="mb-4 inline-block rounded-full bg-hero-foreground/15 px-4 py-1.5 text-sm font-semibold backdrop-blur">{t.tagline}</p>
+          <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-6xl">{t.heroTitle}</h1>
+          <p className="mt-4 max-w-xl text-lg opacity-90">{t.heroSub}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#book" className="rounded-xl bg-primary px-6 py-3 font-bold text-primary-foreground shadow-glow transition hover:scale-105">{t.bookNow}</a>
-            <a href={`tel:${PHONE}`} className="rounded-xl border border-border bg-secondary px-6 py-3 font-bold">📞 {t.call}</a>
+            <a href={`tel:${PHONE}`} className="rounded-xl border border-hero-foreground/50 bg-hero-foreground/10 px-6 py-3 font-bold backdrop-blur">📞 {t.call}</a>
           </div>
         </div>
       </section>
 
       <section id="book" className="mx-auto grid max-w-6xl gap-6 px-4 py-16 md:grid-cols-5">
-        <form onSubmit={submit} className="rounded-2xl border border-border bg-card p-6 md:col-span-3">
-          <h2 className="mb-5 font-display text-2xl">{t.bookTitle}</h2>
+        <form onSubmit={submit} className="rounded-2xl border border-border bg-card p-6 shadow-card md:col-span-3">
+          <h2 className="mb-5 font-display text-2xl font-extrabold">{t.bookTitle}</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             <input name="from" placeholder={t.from} maxLength={150} className="field sm:col-span-2" />
             <input name="to" placeholder={t.to} maxLength={150} className="field sm:col-span-2" />
@@ -109,8 +109,8 @@ function Index() {
           <button className="mt-5 w-full rounded-xl bg-accent py-3 font-bold text-accent-foreground transition hover:opacity-90">💬 {t.send}</button>
         </form>
 
-        <div className="rounded-2xl border border-border bg-card p-6 md:col-span-2">
-          <h2 className="mb-5 font-display text-2xl">{t.calcTitle}</h2>
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-card md:col-span-2">
+          <h2 className="mb-5 font-display text-2xl font-extrabold">{t.calcTitle}</h2>
           <label className="text-sm text-muted-foreground">{t.km}: <b className="text-foreground">{km} km</b></label>
           <input type="range" min={1} max={150} value={km} onChange={(e) => setKm(+e.target.value)} className="mt-2 w-full accent-primary" />
           <label className="mt-4 flex items-center gap-2 text-sm">
@@ -119,7 +119,7 @@ function Index() {
           </label>
           <div className="mt-6 rounded-xl bg-secondary p-5 text-center">
             <p className="text-sm text-muted-foreground">{t.estimate}</p>
-            <p className="font-display text-4xl text-primary">€ {estimateFare(km, night).toFixed(2)}</p>
+            <p className="font-display text-4xl font-extrabold text-primary">€ {estimateFare(km, night).toFixed(2)}</p>
           </div>
           <p className="mt-3 text-xs text-muted-foreground">{t.calcNote}</p>
         </div>
@@ -128,7 +128,7 @@ function Index() {
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <div className="grid items-center gap-6 rounded-2xl bg-primary p-8 text-primary-foreground md:grid-cols-3">
           <div className="md:col-span-2">
-            <h2 className="font-display text-3xl">✈ {t.airportTitle}</h2>
+            <h2 className="font-display text-3xl font-extrabold">✈ {t.airportTitle}</h2>
             <p className="mt-2 opacity-80">{t.airportText}</p>
             <ul className="mt-4 grid gap-1 font-semibold">
               {t.airportPoints.map((p) => <li key={p}>✓ {p}</li>)}
@@ -136,18 +136,18 @@ function Index() {
           </div>
           <div className="text-center">
             <p className="text-sm uppercase opacity-70">{t.flat}</p>
-            <p className="font-display text-6xl">€{AIRPORT_FLAT}</p>
-            <a href="#book" className="mt-3 inline-block rounded-xl bg-background px-5 py-2 font-bold text-foreground">{t.bookNow}</a>
+            <p className="font-display text-6xl font-extrabold">€{AIRPORT_FLAT}</p>
+            <a href="#book" className="mt-3 inline-block rounded-xl bg-card px-5 py-2 font-bold text-primary">{t.bookNow}</a>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-20">
-        <h2 className="mb-6 font-display text-3xl">{t.whyTitle}</h2>
+        <h2 className="mb-6 font-display text-3xl font-extrabold">{t.whyTitle}</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {t.why.map(([h, p]) => (
-            <div key={h} className="rounded-2xl border border-border bg-card p-6">
-              <p className="font-display text-xl text-primary">{h}</p>
+            <div key={h} className="rounded-2xl border border-border bg-card p-6 shadow-card">
+              <p className="font-display text-xl font-bold text-primary">{h}</p>
               <p className="mt-1 text-muted-foreground">{p}</p>
             </div>
           ))}
